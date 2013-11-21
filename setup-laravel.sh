@@ -3,7 +3,7 @@
 echo "Lets's Get Started"
 
 # Create new laravel Project
-echo -n "Create a new Laravel app? [yes/no] : "
+echo -n "Create a new Laravel app? [yes|no] : "
 read -e laravel
 if [[ $laravel == "yes" ]]
     then
@@ -14,7 +14,7 @@ if [[ $laravel == "yes" ]]
 fi
 
 # Install and Configure Way/Generators Package
-echo -n "Add Way/Generators to $appname? : [yes/no] "
+echo -n "Add Way/Generators to $appname? : [yes|no] "
 read -e generators
 if [[ $generators == "yes" ]]
     then
@@ -27,8 +27,8 @@ fi
 # TODO Update app/bootstrap/start.php with env function
 
 # Create mysql database
-echo -n "Does you app need a database? : [yes/no] "
-read -e neaddb
+echo -n "Does you app need a database? : [yes|no] "
+read -e needdb
 if [[ $needdb == 'yes' ]]
     then
         echo -n "What is the name of the database for this app? : "
@@ -52,7 +52,7 @@ if [[ $userstable = 'yes' ]]
         php artisan migrate
 fi
 
-echo -n "Need a Git Repository [yes/no] : "
+echo -n "Need a Git Repository [yes|no] : "
 read -e git
 if [[ $git == 'yes' ]]
     then
