@@ -18,13 +18,20 @@ echo -n "Add Way/Generators to $appname? : [yes|no] "
 read -e generators
 if [[ $generators == "yes" ]]
     then
-        echo Adding Way///Generators to $appname
+        echo "Adding Way/Generators to $appname"
         sed -i '8 a\ "require-dev" : { "way/generators": "dev-master" },' composer.json
         composer update
         sed -i "115 a\ 'Way\\\Generators\\\GeneratorsServiceProvider'," app/config/app.php
 fi
 
-# TODO Update app/bootstrap/start.php with env function
+# Update app/bootstrap/start.php with env function
+echo -n "Set up Development Environment? [yes|no] "
+read -e development
+if [[ $development == "yes" ]]
+    then
+        sed -i -e'29,33d' bootstrap/start.php
+        sed -i "28 a\ \$env = \$app->detectEnvironment(function() { return getenv('ENV') ?: 'development'; });" bootstrap/start.php
+fi
 
 # Create mysql database
 echo -n "Does you app need a database? : [yes|no] "
