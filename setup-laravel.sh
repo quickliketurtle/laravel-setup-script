@@ -69,4 +69,16 @@ if [[ $git == 'yes' ]]
         git commit -m "initial commit"
 fi
 
+echo -n "Add this Repo to Github? [yes|no]: "
+read -e github
+if [[ $github == 'yes' ]]
+    then
+        echo -n "What is your github username? "
+        read githubUsername
+        curl -u "$githubUsername" https://api.github.com/user/repos -d "{\"name\":\"$appname\"}"
+
+        git remote add origin git@github.com:$githubUsername/$appname.git
+        git push origin master
+fi
+
 echo "You're All Set, Now get coding!"
