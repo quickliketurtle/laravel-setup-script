@@ -19,9 +19,9 @@ read -e generators
 if [[ $generators == "yes" ]]
     then
         echo "Adding Way/Generators to $appname"
-        sed -i '8 a\ "require-dev" : { "way/generators": "dev-master" },' composer.json
+        gsed -i '8 a\ "require-dev" : { "way/generators": "dev-master" },' composer.json
         composer update
-        sed -i "115 a\ 'Way\\\Generators\\\GeneratorsServiceProvider'," app/config/app.php
+        gsed -i "115 a\ 'Way\\\Generators\\\GeneratorsServiceProvider'," app/config/app.php
 fi
 
 # Update app/bootstrap/start.php with env function
@@ -29,8 +29,8 @@ echo -n "Set up Development Environment? [yes|no] "
 read -e development
 if [[ $development == "yes" ]]
     then
-        sed -i -e'29,33d' bootstrap/start.php
-        sed -i "28 a\ \$env = \$app->detectEnvironment(function() { return getenv('ENV') ?: 'development'; });" bootstrap/start.php
+        gsed -i -e'29,33d' bootstrap/start.php
+        gsed -i "28 a\ \$env = \$app->detectEnvironment(function() { return getenv('ENV') ?: 'development'; });" bootstrap/start.php
 fi
 
 # Create mysql database
@@ -45,7 +45,7 @@ if [[ $needdb == 'yes' ]]
         mysql -uroot -p -e"CREATE DATABASE $database"
 
         echo Updating database configuration file
-        sed -i "s/'database'  => 'database',/'database'  => '$database',/g" app/config/database.php
+        gsed -i "s/'database'  => 'database',/'database'  => '$database',/g" app/config/database.php
 fi
 
 echo -n "Do you need a users table? [yes|no] : "
