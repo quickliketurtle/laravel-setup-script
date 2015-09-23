@@ -11,15 +11,8 @@ if [[ $laravel == "yes" ]]
         read appname
         laravel new $appname
         cd $appname
-        php artisan key:generate
-fi
-
-# Update app/bootstrap/start.php with env function
-echo -n "Set up Development Environment? [yes|no] "
-read -e development
-if [[ $development == "yes" ]]
-    then
         mv .env.example .env
+        php artisan key:generate
 fi
 
 echo -n "Need a Git Repository [yes|no] : "
