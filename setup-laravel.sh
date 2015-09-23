@@ -11,6 +11,7 @@ if [[ $laravel == "yes" ]]
         read appname
         laravel new $appname
         cd $appname
+        php artisan key:generate
 fi
 
 # Update app/bootstrap/start.php with env function
