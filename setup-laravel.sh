@@ -16,6 +16,13 @@ if [[ $laravel == "yes" ]]
         php artisan app:name $appname
 fi
 
+echo -n "Will you be using elixer? [yes|no] : "
+read -e elixer
+if [[ $elixer == "yes" ]]
+    then
+        npm install
+fi
+
 echo -n "Need a Git Repository [yes|no] : "
 read -e git
 if [[ $git == 'yes' ]]
