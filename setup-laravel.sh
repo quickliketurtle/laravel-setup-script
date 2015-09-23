@@ -12,17 +12,6 @@ if [[ $laravel == "yes" ]]
         laravel new $appname
 fi
 
-# Install and Configure Way/Generators Package
-echo -n "Add Way/Generators to $appname? : [yes|no] "
-read -e generators
-if [[ $generators == "yes" ]]
-    then
-        echo "Adding Way/Generators to $appname"
-        gsed -i '8 a\ "require-dev" : { "way/generators": "dev-master" },' composer.json
-        composer update
-        gsed -i "115 a\ 'Way\\\Generators\\\GeneratorsServiceProvider'," app/config/app.php
-fi
-
 # Update app/bootstrap/start.php with env function
 echo -n "Set up Development Environment? [yes|no] "
 read -e development
