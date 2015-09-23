@@ -21,17 +21,6 @@ if [[ $development == "yes" ]]
         mv .env.example .env
 fi
 
-echo -n "Do you need a users table? [yes|no] : "
-read -e userstable
-if [[ $userstable = 'yes' ]]
-    then
-        echo Creating Users Table
-        php artisan generate:migration create_users_table --fields="username:string:unique, email:string:unique, password:string"
-
-        echo Migrating the database
-        php artisan migrate
-fi
-
 echo -n "Need a Git Repository [yes|no] : "
 read -e git
 if [[ $git == 'yes' ]]
