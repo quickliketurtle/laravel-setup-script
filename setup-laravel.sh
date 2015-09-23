@@ -10,6 +10,7 @@ if [[ $laravel == "yes" ]]
         echo -n "What is the name of the app? : "
         read appname
         laravel new $appname
+        cd $appname
 fi
 
 # Update app/bootstrap/start.php with env function
@@ -17,8 +18,7 @@ echo -n "Set up Development Environment? [yes|no] "
 read -e development
 if [[ $development == "yes" ]]
     then
-        gsed -i -e'29,33d' bootstrap/start.php
-        gsed -i "28 a\ \$env = \$app->detectEnvironment(function() { return getenv('ENV') ?: 'development'; });" bootstrap/start.php
+        mv .env.example .env
 fi
 
 # Create mysql database
