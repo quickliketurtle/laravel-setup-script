@@ -21,21 +21,6 @@ if [[ $development == "yes" ]]
         mv .env.example .env
 fi
 
-# Create mysql database
-echo -n "Does you app need a database? : [yes|no] "
-read -e needdb
-if [[ $needdb == 'yes' ]]
-    then
-        echo -n "What is the name of the database for this app? : "
-        read -e database
-
-        echo Creating MySQL database
-        mysql -uroot -p -e"CREATE DATABASE $database"
-
-        echo Updating database configuration file
-        gsed -i "s/'database'  => 'database',/'database'  => '$database',/g" app/config/database.php
-fi
-
 echo -n "Do you need a users table? [yes|no] : "
 read -e userstable
 if [[ $userstable = 'yes' ]]
