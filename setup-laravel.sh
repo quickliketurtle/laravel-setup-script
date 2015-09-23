@@ -9,8 +9,7 @@ if [[ $laravel == "yes" ]]
     then
         echo -n "What is the name of the app? : "
         read appname
-        composer create-project laravel/laravel $appname --prefer-dist
-        cd $appname
+        laravel new $appname
 fi
 
 # Install and Configure Way/Generators Package
