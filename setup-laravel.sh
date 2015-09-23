@@ -13,6 +13,7 @@ if [[ $laravel == "yes" ]]
         cd $appname
         mv .env.example .env
         php artisan key:generate
+        php artisan app:name $appname
 fi
 
 echo -n "Need a Git Repository [yes|no] : "
