@@ -1,3 +1,5 @@
+__If anyone is reading this, checkout [Lambo](https://github.com/tightenco/lambo) instead.__
+
 # _Laravel Setup Script_
 
 _Description: Sets up new laravel project and pushes to new github repo._
